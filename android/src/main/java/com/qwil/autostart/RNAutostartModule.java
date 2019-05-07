@@ -39,6 +39,17 @@ public class RNAutostartModule extends ReactContextBaseJavaModule {
     return "RNAutostart";
   }
 
+  @ReactMethod 
+  public void isSupported(final Promise promise) {
+    for (Intent intent : AUTO_START_INTENTS) {
+      if (this.reactContext.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY) != null) {
+        promise.resolve(true);
+        return;
+      }
+    }
+    promise.resolve(false);
+  }
+
   @ReactMethod
   public void open() {
     for (Intent intent : AUTO_START_INTENTS) {
