@@ -10,6 +10,7 @@
   "keywords": [
     "react-native"
   ],
+  "types": "./index.d.ts",
   "author": "",
   "license": "",
   "peerDependencies": {
